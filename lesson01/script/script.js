@@ -10,3 +10,7 @@ console.log('income: ' + typeof income);
 console.log('deposit: ' + typeof deposit);
 console.log('Длина строки: ' + addExpenses.length);
 console.log(`Период равен ${period} месяцев. Цель заработать ${mission} рублей`);
+console.log('Строка в нижнем регистре: ' + addExpenses.toLowerCase());
+
+let arr = addExpenses.split(',');
+console.log(arr);
