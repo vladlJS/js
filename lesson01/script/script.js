@@ -23,6 +23,7 @@ console.log(`Дневной доход ${budgetDay}`);
 
 // Третий урок
 money = prompt('Ваш месячный доход?');
+console.log(money);
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 console.log(addExpenses.split(','));
 deposit = confirm('Есть ли у вас депозит в банке?');
