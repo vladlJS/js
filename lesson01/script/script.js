@@ -24,7 +24,7 @@ console.log(`Дневной доход ${budgetDay}`);
 // Третий урок
 money = prompt('Ваш месячный доход?');
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-console.log(addExpenses);
+console.log(addExpenses.split(','));
 deposit = confirm('Есть ли у вас депозит в банке?');
 console.log(deposit);
 expenses1 = prompt('Введите обязательную статью расходов');
@@ -40,3 +40,16 @@ console.log(budgetMonth);
 console.log(`За ${Math.ceil(mission/budgetMonth)} месяцев будет достигнута цель ${mission} рублей/долларов/евро.`);
 budgetDay = budgetMonth / 30; //дневной бюджет
 console.log(`Дневной бюджет ${Math.floor(budgetDay)}`);
+
+switch (true) {
+    case budgetDay >= 1200:
+    console.log('У вас высокий уровень дохода');
+    break;
+    case budgetDay >= 600:
+    console.log('У вас средний уровень дохода');
+    break;
+    case budgetDay < 600:
+    console.log('К сожалению у вас уровень дохода ниже среднего');
+    break;
+    default: console.log('Что то пошло не так');
+}
