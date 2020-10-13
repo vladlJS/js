@@ -1,4 +1,4 @@
-'use strickt'
+'use strict'
 
 let money = 100000;
 let income = 'фриланс';
