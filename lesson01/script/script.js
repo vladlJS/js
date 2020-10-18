@@ -54,4 +54,4 @@ switch (true) {
     break;
     default: console.log('Что то пошло не так');
 }
-//test
+//test commit
