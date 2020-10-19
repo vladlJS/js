@@ -56,7 +56,7 @@ console.log(addExpenses.split(',')); // Возможные расходы
 
 // Накопления за месяц
 function getAccumulatedMonth(){
-    return money - (amount1 + amount2); 
+    return money - getExpensesMonth(); 
 };
 let accumulatedMonth = getAccumulatedMonth(); 
 //console.log(accumulatedMonth);
