@@ -1,19 +1,7 @@
 'use strict'
 
-let isNumber = function (n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-};
-
-let money = 100000;
-let income = 'фриланс';
-let addExpenses = 'Интернет, Такси, Коммуналка';
-let deposit = true;
-let mission = 2000000;
-let period = 12;
-let budgetDay = money / 30; //дневной доход
-let expenses1, expenses2, amount1, amount2, budgetMonth;
-
-let start = function(){
+let money = 100000,
+    start = function(){
     //money = prompt('Ваш месячный доход?');
 
     // while (!isNumber(money)) {
@@ -24,6 +12,19 @@ let start = function(){
     }while(!isNumber(money));
 };
 start();
+
+let isNumber = function (n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+let income = 'фриланс';
+    addExpenses = 'Интернет, Такси, Коммуналка';
+    deposit = true;
+    mission = 2000000;
+    period = 12;
+    budgetDay = money / 30; //дневной доход
+    expenses1, expenses2, amount1, amount2, budgetMonth;
+
 
 // Тип данных
 let showTypeOf = function(data){
