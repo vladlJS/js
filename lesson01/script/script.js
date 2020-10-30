@@ -77,9 +77,6 @@ let appData = {
 appData.asking();
 
 console.log(appData.expenses);
-
-let expenses1, expenses2, amount1, amount2;
-
 // let expenses = [];
 
 // console.log('Длина строки: ', addExpenses.length);
