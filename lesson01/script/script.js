@@ -21,11 +21,10 @@ let appData = {
     mission: 2000000,
     period: 12,
     asking: function(){
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+        const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        
-        // Метод getExpensesMonth
+
         let amount;
         for (let i = 0; i < 2; i++) {
             let expensesName = prompt('Введите обязательную статью расходов');
@@ -51,8 +50,6 @@ let appData = {
     getBudget: function (){
         appData.budgetMonth = appData.budget - appData.expensesMonth;
         appData.budgetDay = appData.budgetMonth / 30;
-        //return appData.budgetMonth, appData.budgetDay;
-        // money - appData.expensesMonth; 
     },
     getTargetMonth: function (){
         return Math.ceil(appData.mission/appData.budgetMonth);
@@ -77,32 +74,6 @@ let appData = {
 appData.asking();
 
 console.log(appData.expenses);
-// let expenses = [];
-
-// console.log('Длина строки: ', addExpenses.length);
-// console.log(`Период равен ${period} месяцев. Цель заработать ${mission} рублей`);
-
-// console.log('Строка в нижнем регистре: ', addExpenses.toLowerCase());
-//let arr = appData.addExpenses.split(',');
-// console.log(arr);
-
-// Обязательные расходы
-// let getExpensesMonth = function(){
-//     let sum = 0;
-//     let amount;
-//     for (let i = 0; i < 2; i++) {
-
-//         expenses[i] = prompt('Введите обязательную статью расходов');
-
-//         do{
-//             amount = prompt('Во сколько это обойдётся?');
-//         }
-//         while (!isNumber(amount) || amount === '' || amount === null);
-//             sum += +amount;
-//         // sum += +prompt('Во сколько это обойдётся?');
-//     }
-//     return sum; 
-// };
 
 console.log('Расходы за месяц: ' + appData.getExpensesMonth());
 
