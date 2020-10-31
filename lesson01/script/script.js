@@ -1,6 +1,6 @@
 'use strict'
 
-let isNumber = function (n) {
+const isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
@@ -12,7 +12,7 @@ let money = 100000,
     };
     start();
 
-let appData = {
+const appData = {
     income: {},
     addIncome: [],
     expenses: {},
@@ -27,7 +27,7 @@ let appData = {
 
         let amount;
         for (let i = 0; i < 2; i++) {
-            let expensesName = prompt('Введите обязательную статью расходов');
+            const expensesName = prompt('Введите обязательную статью расходов');
             do{
                amount = +prompt('Во сколько это обойдётся?');
             }
