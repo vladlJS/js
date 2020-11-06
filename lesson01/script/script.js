@@ -1,5 +1,50 @@
 'use strict'
 
+const btnStart = document.getElementById('start');
+const incomeAdd = document.getElementsByTagName('button')[0];
+const expensesAdd = document.getElementsByTagName('button')[1];
+const depositCheck = document.querySelector('#deposit-check');
+const additionalIncomeItem = document.querySelectorAll('.additional_income-item');
+const budgetDayValue = document.getElementsByClassName('budget_day-value');
+const expensesMonthValue = document.getElementsByClassName('expenses_month-value');
+const additionalIncomeValue = document.getElementsByClassName('additional_income-value');
+const additionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+const incomePeriodValue = document.getElementsByClassName('income_period-value');
+const targetMonthValue = document.getElementsByClassName('target_month-value');
+const salaryAmount = document.querySelector('.salary-amount');
+const incomeTitle = document.querySelector('.income-title');
+const incomeAmount = document.querySelector('.income-amount');
+const expensesTitle = document.querySelector('.expenses-title');
+const expensesAmount = document.querySelector('.expenses-amount');
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
+const depositAmount = document.querySelector('.deposit-amount');
+const depositPercent = document.querySelector('.deposit-percent');
+const targetAmount = document.querySelector('.target-amount');
+const periodSelect = document.querySelector('.period-select');
+
+
+console.log(btnStart);
+console.log(incomeAdd);
+console.log(expensesAdd);
+console.log(depositCheck);
+console.log(additionalIncomeItem);
+console.log(expensesMonthValue);
+console.log(additionalIncomeValue);
+console.log(additionalExpensesValue);
+console.log(incomePeriodValue);
+console.log(targetMonthValue);
+console.log(salaryAmount);
+console.log(incomeTitle);
+console.log(incomeAmount);
+console.log(expensesTitle);
+console.log(expensesAmount);
+console.log(additionalExpensesItem);
+console.log(depositAmount);
+console.log(depositPercent);
+console.log(targetAmount);
+console.log(periodSelect);
+
+
 const isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -58,10 +103,10 @@ const appData = {
             }while (isNumber(expensesName));
 
             do{
-               amount = +prompt('Во сколько это обойдётся?');
+               amount = prompt('Во сколько это обойдётся?');
             }
             while (!isNumber(amount) || amount === '' || amount === null);
-            appData.expenses[expensesName] = amount;
+            appData.expenses[expensesName] = +amount;
         }
     },
     
