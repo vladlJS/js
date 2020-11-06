@@ -37,22 +37,13 @@ const appData = {
             appData.income[itemIncome] = cashIncome;
         }
 
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Кредит, БЕНЗИН,        тренировки   ,чё то ещё');
+        const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Кредит, БЕНЗИН,        тренировки   ,чё то ещё');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
-        
-            // appData.addExpenses.forEach(function(item) {
-            //     item = item.trim();
-            //     item = item.charAt(0).toUpperCase() + item.substr(1);
-            //     console.log(item);
-            // }
-            // );
-            // console.log(appData.addExpenses.join().trim());
 
-        let exp = appData.addExpenses.map(function(item) {
+        const exp = appData.addExpenses.map(function(item) {
             item = item.trim();
             item = item.charAt(0).toUpperCase() + item.substr(1);
-           // console.log(item);
-        return item;
+            return item;
         });
         console.log(exp.join(', '));
 
