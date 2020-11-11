@@ -28,11 +28,11 @@ const appData = {
             let itemIncome, cashIncome;
             do{
                 itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
-            }while(isNumber(itemIncome));
+            }while(isNumber(itemIncome) || itemIncome === '' || itemIncome === null);
 
             do{
             cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
-            }while(!isNumber(cashIncome));
+            }while(!isNumber(cashIncome) || cashIncome === '' || cashIncome === null);
 
             appData.income[itemIncome] = cashIncome;
         }
@@ -55,7 +55,7 @@ const appData = {
             let expensesName;
             do{
             expensesName = prompt('Введите обязательную статью расходов');
-            }while (isNumber(expensesName));
+            }while (isNumber(expensesName) || expensesName === '' || expensesName === null);
 
             do{
                amount = +prompt('Во сколько это обойдётся?');
@@ -102,10 +102,10 @@ const appData = {
         if(appData.deposit){
             do{
             appData.percentDeposit = prompt('Какой годовой процент?', '10');
-            }while(!isNumber(appData.percentDeposit));
+            }while(!isNumber(appData.percentDeposit) || appData.percentDeposit === '' || appData.percentDeposit === null);
             do{
             appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
-            }while(!isNumber(appData.moneyDeposit));
+            }while(!isNumber(appData.moneyDeposit) || appData.moneyDeposit === '' || appData.moneyDeposit === null);
         }
     },
     calcSavedMoney: function(){
