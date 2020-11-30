@@ -107,7 +107,6 @@ let appData = {
     },
     addIncomeBlock: function(){
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
-        // document.querySelectorAll('.income-items').innerHTML = '';
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomeAdd);
 
         incomeItems = document.querySelectorAll('.income-items');
@@ -221,9 +220,6 @@ let appData = {
         return appData.budgetMonth * periodSelect.value;
     }
 };
-
-
-
 
 btnStart.addEventListener('click', appData.start);
 
