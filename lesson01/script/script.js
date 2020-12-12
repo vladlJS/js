@@ -59,6 +59,7 @@ let appData = {
         cancel.style.display = 'block';
         incomeAdd.setAttribute('disabled', '');
         expensesAdd.setAttribute('disabled', '');
+        depositCheck.setAttribute('disabled', '');
         inputs.forEach(function(item){
             item.setAttribute('disabled', '');
         });
@@ -77,6 +78,9 @@ let appData = {
     reset: function(){
         cancel.style.display = 'none';
         btnStart.style.display = 'block';
+        incomeAdd.removeAttribute('disabled', '');
+        expensesAdd.removeAttribute('disabled', '');
+        depositCheck.removeAttribute('disabled', '');
         inputs.forEach(function(item){
             item.removeAttribute('disabled', '');
             item.value = "";
