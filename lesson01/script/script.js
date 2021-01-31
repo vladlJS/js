@@ -40,20 +40,20 @@ class AppData {
         this.deposit = false;
         this.percentDeposit = 0;
         this.moneyDeposit = 0;
-    };
+    }
 
     btn() {
         if (salaryAmount !== ''){
             btnStart.removeAttribute('disabled', '');
         }
-    };
+    }
 
     start() {
         if (salaryAmount.value === ''){
             btnStart.setAttribute('disabled', '');
             return;
         }
-        let inputs = document.querySelectorAll('input[type="text"]');
+        const inputs = document.querySelectorAll('input[type="text"]');
         btnStart.style.display = 'none';
         cancel.style.display = 'block';
         incomeAdd.setAttribute('disabled', '');
@@ -64,15 +64,18 @@ class AppData {
         });
 
         this.budget = +salaryAmount.value;
-        this.getExpenses();
-        this.getIncome();
+        this.getExpInc();
+        // this.getExpenses();
+        // this.getIncome();
+        this.addExpIncBlock();
         this.getExpensesMonth();
         this.getAddExpenses();
         this.getAddIncome();
         this.getBudget();
         this.showResult();
         this.getStatusIncome();
-    };
+    }
+
     reset() {
         let inputs = document.querySelectorAll('input[type="text"]');
         cancel.style.display = 'none';
@@ -86,7 +89,8 @@ class AppData {
             periodSelect.value = 1;
             periodAmount.innerHTML = periodSelect.value;
         });
-    };
+    }
+
     showResult() {
         const _this = this;
         budgetMonthValue.value = this.budgetMonth;
@@ -99,7 +103,8 @@ class AppData {
         periodSelect.addEventListener('input', function(){
             incomePeriodValue.value = _this.calcSavedMoney();
         });
-    };
+    }
+
     addExpensesBlock() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesAdd);
@@ -108,7 +113,8 @@ class AppData {
         if (expensesItems.length === 3){
             expensesAdd.style.display = 'none';
         }
-    };
+    }
+
     addIncomeBlock() {
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomeAdd);
@@ -118,30 +124,64 @@ class AppData {
         if (incomeItems.length === 3){
             incomeAdd.style.display = 'none';
         }
-    };
-    getExpenses() {
-        const _this = this;
-        expensesItems.forEach(function(item){
-            let itemExpenses = item.querySelector('.expenses-title').value;
-            let cashExpenses = item.querySelector('.expenses-amount').value;
-            if(itemExpenses !== '' && cashExpenses !== ''){
-                _this.expenses[itemExpenses] = cashExpenses;
+    }
+
+    // addExpIncBlock(){
+    //     const count = item => {
+    //         const startStr = item.className.split('-')[0];
+    //         console.log(startStr);
+    //         let clone`${startStr}`item = [startStr]Items[0].cloneNode(true);
+    //         const expensesItem = document.querySelectorAll(`.${startStr}-items`);
+    //         const incomeItem = document.querySelectorAll(`.${startStr}-items`);
+
+    //     }
+    //     incomeItems.forEach(count);
+    //     expensesItems.forEach(count);
+    // }
+    
+
+    // getExpenses() {
+    //     const _this = this;
+    //     expensesItems.forEach(function(item){
+    //         let itemExpenses = item.querySelector('.expenses-title').value;
+    //         let cashExpenses = item.querySelector('.expenses-amount').value;
+    //         if(itemExpenses !== '' && cashExpenses !== ''){
+    //             _this.expenses[itemExpenses] = cashExpenses;
+    //         }
+    //     });
+    // }
+
+    // getIncome() {
+    //     const _this = this;
+    //     incomeItems.forEach(function(item){
+    //         let itemIncome = item.querySelector('.income-title').value;
+    //         let cashIncome = item.querySelector('.income-amount').value;
+    //         if (itemIncome !== '' && cashIncome !== ''){
+    //             _this.income[itemIncome] = cashIncome;
+    //         }
+    //     });
+    //     for(let key in this.income){
+    //         this.incomeMonth += +this.income[key];
+    //     }
+    // }
+    getExpInc() {
+        const count = item => {
+            const startStr = item.className.split('-')[0];
+            const itemTitle = item.querySelector(`.${startStr}-title`).value;
+            const itemAmount = item.querySelector(`.${startStr}-amount`).value;
+            if (itemTitle !== '' && itemAmount !== ''){
+                this[startStr][itemTitle] = itemAmount;
             }
-        });
-    };
-    getIncome() {
-        const _this = this;
-        incomeItems.forEach(function(item){
-            let itemIncome = item.querySelector('.income-title').value;
-            let cashIncome = item.querySelector('.income-amount').value;
-            if (itemIncome !== '' && cashIncome !== ''){
-                _this.income[itemIncome] = cashIncome;
-            }
-        });
+        }
+
+        incomeItems.forEach(count);
+        expensesItems.forEach(count);
+
         for(let key in this.income){
             this.incomeMonth += +this.income[key];
         }
-    };
+    }
+
     getAddExpenses() {
         const _this = this;
         let addExpenses = additionalExpensesItem.value.split(',');
@@ -151,7 +191,8 @@ class AppData {
                 _this.addExpenses.push(item);
             }
         });
-    }; 
+    }
+
     getAddIncome() {
         const _this = this;
         additionalIncomeItem.forEach(function(item){
@@ -160,20 +201,24 @@ class AppData {
                 _this.addIncome.push(itemValue);
             }
         });
-    };
+    }
+
     getExpensesMonth() {
         for (let item in this.expenses){
             this.expensesMonth += +this.expenses[item];
         }
             //return appData.expensesMonth; 
-    };
+    }
+
     getBudget() {
         this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
         this.budgetDay = this.budgetMonth / 30;
-    };
+    }
+
     getTargetMonth() {
         return Math.ceil(targetAmount.value/this.budgetMonth);    
-    };
+    }
+
     getStatusIncome() {
         switch (true) {
             case this.budgetDay >= 1200:
@@ -187,7 +232,8 @@ class AppData {
             break;
             default: console.log('Что то пошло не так');
         }
-    };
+    }
+
     getInfoDeposit() {
     // if(this.deposit){
     //     do{
@@ -197,14 +243,16 @@ class AppData {
     //     this.moneyDeposit = prompt('Какая сумма заложена?', 10000);
     //     }while(!isNumber(this.moneyDeposit));
     // }
-    };
+    }
+
     calcSavedMoney() {
         periodAmount.innerHTML = periodSelect.value;
         return this.budgetMonth * periodSelect.value;
-    };
+    }
+
     isNumber(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
-    };
+    }
 
     eventListeners() {
         salaryAmount.addEventListener("input", appData.btn);
@@ -213,7 +261,7 @@ class AppData {
         cancel.addEventListener('click', this.reset.bind(this));
         expensesAdd.addEventListener('click', this.addExpensesBlock);
         incomeAdd.addEventListener('click', this.addIncomeBlock);
-    };
+    }
 };
 
 const appData = new AppData();
